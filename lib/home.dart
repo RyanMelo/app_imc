@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                       style: TextStyle(fontWeight: FontWeight.bold)
                     ),
                     TextSpan(
-                      text: ") é uma medida internacional usada para calcular se uma pessoa está no peso ideal. ",
+                      text: ") é uma medida internacional usada para calcular se uma pessoa está no peso ideal.",
                     ),
                   ]
                 ),
