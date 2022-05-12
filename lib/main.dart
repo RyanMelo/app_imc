@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'home.dart';
+import 'resu_imc.dart';
 
 void main(List<String> args) {
   runApp(const App());
@@ -19,9 +20,13 @@ class _AppState extends State<App> {
 
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const HomePage(),
+        '/resultImc': (context) => const ResultImc(),
+      },
     );
   }
 }
