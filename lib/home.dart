@@ -1,6 +1,5 @@
 import 'package:app_imc/models/dados.dart';
 import 'package:flutter/material.dart';
-import 'resu_imc.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({ Key? key }) : super(key: key);
