@@ -45,3 +45,12 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 /windows
+
+#Pastas nao necessarias
+windows
+web
+android
+macos
+linux
+ios
+test

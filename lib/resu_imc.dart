@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'models/dados.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'dart:io';
 
 class ResultImc extends StatefulWidget {
   const ResultImc({ Key? key }) : super(key: key);
@@ -9,6 +11,40 @@ class ResultImc extends StatefulWidget {
 }
 
 class _ResultImcState extends State<ResultImc> {
+
+  late BannerAd _bannerAd;
+  bool _isAdLoad = false;
+
+   void initAdBanner() {
+    _bannerAd = BannerAd(
+      size: AdSize.banner, 
+      // adUnitId: BannerAd.testAdUnitId,
+      adUnitId: Platform.isAndroid 
+      ? 'ca-app-pub-3392891248924144/6556588651'
+      : '',
+      listener: BannerAdListener(
+        onAdLoaded: (ad) {
+          setState(() {
+            _isAdLoad = true;
+            _bannerAd = ad as BannerAd;
+          });
+        },
+        onAdFailedToLoad: (ad, error) {
+          print('Erro ao carregar banner CODIGO DE ERRO: ${error.code} | MENSAGEM: ${error.message}');
+          ad.dispose();
+        }
+      ), 
+      request: AdRequest(),
+    );
+
+    _bannerAd.load();
+  }
+
+  @override
+  void initState() {
+    initAdBanner();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,9 +78,16 @@ class _ResultImcState extends State<ResultImc> {
 
     return SafeArea(
       child: Scaffold(
+        bottomNavigationBar: _isAdLoad 
+        ? Container(
+          width: _bannerAd.size.width.toDouble(),
+          height: _bannerAd.size.height.toDouble(),
+          child: AdWidget(ad: _bannerAd),
+        ) 
+        : const SizedBox(),
         appBar: AppBar(
           title: const Text("Calculadora de IMC"),
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.blue,
         ),
         body: Container(
           alignment: Alignment.center,
@@ -58,7 +101,7 @@ class _ResultImcState extends State<ResultImc> {
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(10),
                 decoration: const BoxDecoration(
-                  color: Colors.green,
+                  color: Colors.blue,
                   borderRadius: BorderRadius.all(Radius.circular(20.0)),
                 ),
                 child: RichText(
@@ -82,11 +125,11 @@ class _ResultImcState extends State<ResultImc> {
                   )
                 ),
               ),
-              const SizedBox(height: 60),
-              const Image(
-                image: NetworkImage('https://files.passeidireto.com/7b85d74f-5ceb-4b88-9019-cf93e80ae751/7b85d74f-5ceb-4b88-9019-cf93e80ae751.png'),
-                width: 500,
-                height: 250,
+              const Expanded(
+                child: Image(
+                  image: AssetImage('assets/imgs/tabela_imc.png'),
+                  width: 300,
+                ),
               ),
             ],
           ),
