@@ -20,7 +20,7 @@ class _ResultImcState extends State<ResultImc> {
       size: AdSize.banner, 
       // adUnitId: BannerAd.testAdUnitId,
       adUnitId: Platform.isAndroid 
-      ? 'ca-app-pub-3392891248924144/6556588651'
+      ? 'ca-app-pub-8327657769248601/6955165597'
       : '',
       listener: BannerAdListener(
         onAdLoaded: (ad) {

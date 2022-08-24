@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
       size: AdSize.banner, 
       // adUnitId: BannerAd.testAdUnitId,
       adUnitId: Platform.isAndroid 
-      ? 'ca-app-pub-3392891248924144/9939847197'
+      ? 'ca-app-pub-8327657769248601/5078444315'
       : '',
       listener: BannerAdListener(
         onAdLoaded: (ad) {
