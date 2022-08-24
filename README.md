@@ -6,6 +6,6 @@ ___
 ### Materia: Dev. Mobile
 ___
 
-### <a href="https://play.google.com/store/apps/details?id=com.ryanmelo.app_imc" >⬇️ Download na PlayStore</a>
+### <a href="https://play.google.com/store/apps/details?id=com.ryanmelo.app_imc" target="_blank" >⬇️ Download na PlayStore</a>
 
 É só o começo 🚀
